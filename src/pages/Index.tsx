@@ -12,30 +12,21 @@ const Index = () => {
       maxGuests: 2,
       image: apartmentImage,
       features: ["AC", "Heating", "WiFi", "TV"],
-      onCheckAvailability: () => {
-        // Placeholder - user will provide ICS calendar link later
-        alert("Calendar integration will be added here with your ICS link");
-      }
+      icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
     },
     {
       name: "Mr Messi Suite",
       maxGuests: 2,
       image: suiteImage,
       features: ["AC", "Heating", "WiFi", "TV"],
-      onCheckAvailability: () => {
-        // Placeholder - user will provide ICS calendar link later
-        alert("Calendar integration will be added here with your ICS link");
-      }
+      icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
     },
     {
       name: "Les Rambles Classic",
       maxGuests: 5,
       image: classicImage,
       features: ["AC", "Heating", "WiFi", "TV"],
-      onCheckAvailability: () => {
-        // Placeholder - user will provide ICS calendar link later
-        alert("Calendar integration will be added here with your ICS link");
-      }
+      icsUrl: "https://www.airbnb.com/calendar/ical/1076614315151123442.ics?s=a99e8323a5b151010af4f843e16ab511"
     }
   ];
 
@@ -61,7 +52,11 @@ const Index = () => {
             {apartments.map((apartment, index) => (
               <ApartmentCard
                 key={index}
-                {...apartment}
+                name={apartment.name}
+                maxGuests={apartment.maxGuests}
+                image={apartment.image}
+                features={apartment.features}
+                icsUrl={apartment.icsUrl}
               />
             ))}
           </div>

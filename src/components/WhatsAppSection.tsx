@@ -4,8 +4,7 @@ import { MessageCircle, Gift, Clock, Star } from "lucide-react";
 
 const WhatsAppSection = () => {
   const handleWhatsAppClick = () => {
-    // Placeholder - user will provide phone number later
-    const phoneNumber = "YOUR_PHONE_NUMBER"; // To be replaced
+    const phoneNumber = "34618254217"; // Spain country code + number
     const message = encodeURIComponent("Hi! I'm interested in booking one of your Barcelona apartments near Camp Nou. Can you tell me about exclusive perks for direct bookings?");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };

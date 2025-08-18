@@ -1,17 +1,17 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Wifi, Wind, Thermometer, Tv, MapPin } from "lucide-react";
+import AvailabilityChecker from "./AvailabilityChecker";
 
 interface ApartmentCardProps {
   name: string;
   maxGuests: number;
   image: string;
   features: string[];
-  onCheckAvailability: () => void;
+  icsUrl: string;
 }
 
-const ApartmentCard = ({ name, maxGuests, image, features, onCheckAvailability }: ApartmentCardProps) => {
+const ApartmentCard = ({ name, maxGuests, image, features, icsUrl }: ApartmentCardProps) => {
   return (
     <Card className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 transform hover:-translate-y-1 card-gradient border-0">
       <div className="relative overflow-hidden">
@@ -66,14 +66,10 @@ const ApartmentCard = ({ name, maxGuests, image, features, onCheckAvailability }
       </CardContent>
       
       <CardFooter>
-        <Button 
-          variant="availability"
-          size="lg"
-          onClick={onCheckAvailability}
-          className="w-full"
-        >
-          Check Availability
-        </Button>
+        <AvailabilityChecker 
+          apartmentName={name}
+          icsUrl={icsUrl}
+        />
       </CardFooter>
     </Card>
   );
