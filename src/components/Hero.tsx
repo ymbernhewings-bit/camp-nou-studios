@@ -1,18 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Star } from "lucide-react";
 import heroImage from "@/assets/camp-nou-hero.jpg";
-
 const Hero = () => {
   const scrollToApartments = () => {
-    document.getElementById('apartments')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('apartments')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${heroImage})`
+    }}>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
       </div>
       
@@ -37,33 +35,18 @@ const Hero = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
           <div className="flex items-center gap-2 text-yellow-400">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-current" />
-            ))}
+            {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
             <span className="ml-2 text-white font-semibold">Exceptional Location</span>
           </div>
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            variant="hero" 
-            size="lg"
-            onClick={scrollToApartments}
-            className="text-lg px-8 py-6 h-auto"
-          >
+          <Button variant="hero" size="lg" onClick={scrollToApartments} className="text-lg px-8 py-6 h-auto">
             View Our Apartments
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="text-lg px-8 py-6 h-auto bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-          >
-            Contact Us Direct
-          </Button>
+          
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
