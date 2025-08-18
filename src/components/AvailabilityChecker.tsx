@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Calendar } from "@/components/ui/calendar";
 import { useCalendarAvailability } from "@/hooks/useCalendarAvailability";
 import { Loader2, CalendarDays, CheckCircle, XCircle } from "lucide-react";
@@ -117,6 +117,9 @@ const AvailabilityChecker = ({ apartmentName, icsUrl }: AvailabilityCheckerProps
           <DialogTitle className="text-center">
             {apartmentName} Availability
           </DialogTitle>
+          <DialogDescription className="text-center text-sm text-muted-foreground">
+            Select a date to check availability and inquire via WhatsApp
+          </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-4">

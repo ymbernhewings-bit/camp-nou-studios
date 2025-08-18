@@ -30,18 +30,23 @@ export const useCalendarAvailability = () => {
       const events = parseICSEvents(icsData);
       
       // Get blocked dates (dates with events are unavailable)
+      // For Airbnb, the end date is checkout date, so we don't include it in blocked range
       const blockedDates = events.map(event => {
         const dates = [];
         const currentDate = new Date(event.start);
         const endDate = new Date(event.end);
         
-        while (currentDate <= endDate) {
+        // Include start date up to (but not including) end date
+        while (currentDate < endDate) {
           dates.push(new Date(currentDate));
           currentDate.setDate(currentDate.getDate() + 1);
         }
         
         return dates;
       }).flat();
+      
+      console.log('Blocked dates count:', blockedDates.length);
+      console.log('Sample blocked dates:', blockedDates.slice(0, 5).map(d => d.toLocaleDateString()));
       
       setLoading(false);
       return blockedDates;
@@ -59,6 +64,8 @@ export const useCalendarAvailability = () => {
     let currentEvent: Partial<CalendarEvent> = {};
     let inEvent = false;
 
+    console.log('Parsing ICS data, total lines:', lines.length);
+
     for (const line of lines) {
       const trimmedLine = line.trim();
       
@@ -67,22 +74,39 @@ export const useCalendarAvailability = () => {
         currentEvent = {};
       } else if (trimmedLine === 'END:VEVENT') {
         if (currentEvent.start && currentEvent.end) {
+          console.log('Parsed event:', currentEvent);
           events.push(currentEvent as CalendarEvent);
         }
         inEvent = false;
       } else if (inEvent) {
+        // Handle DTSTART with optional parameters like DTSTART;VALUE=DATE:
         if (trimmedLine.startsWith('DTSTART')) {
-          const dateStr = trimmedLine.split(':')[1];
-          currentEvent.start = parseICSDate(dateStr);
-        } else if (trimmedLine.startsWith('DTEND')) {
-          const dateStr = trimmedLine.split(':')[1];
-          currentEvent.end = parseICSDate(dateStr);
-        } else if (trimmedLine.startsWith('SUMMARY')) {
-          currentEvent.summary = trimmedLine.split(':')[1];
+          const colonIndex = trimmedLine.indexOf(':');
+          if (colonIndex !== -1) {
+            const dateStr = trimmedLine.substring(colonIndex + 1);
+            currentEvent.start = parseICSDate(dateStr);
+            console.log('Parsed start date:', dateStr, '→', currentEvent.start);
+          }
+        } 
+        // Handle DTEND with optional parameters like DTEND;VALUE=DATE:
+        else if (trimmedLine.startsWith('DTEND')) {
+          const colonIndex = trimmedLine.indexOf(':');
+          if (colonIndex !== -1) {
+            const dateStr = trimmedLine.substring(colonIndex + 1);
+            currentEvent.end = parseICSDate(dateStr);
+            console.log('Parsed end date:', dateStr, '→', currentEvent.end);
+          }
+        } 
+        else if (trimmedLine.startsWith('SUMMARY')) {
+          const colonIndex = trimmedLine.indexOf(':');
+          if (colonIndex !== -1) {
+            currentEvent.summary = trimmedLine.substring(colonIndex + 1);
+          }
         }
       }
     }
 
+    console.log('Total events parsed:', events.length);
     return events;
   };
 
