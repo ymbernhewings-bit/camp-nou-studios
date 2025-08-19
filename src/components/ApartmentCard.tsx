@@ -2,30 +2,76 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge";
 import { Users, Wifi, Wind, Thermometer, Tv, MapPin } from "lucide-react";
 import AvailabilityChecker from "./AvailabilityChecker";
+import { useState, useEffect } from "react";
 
 interface ApartmentCardProps {
   name: string;
   maxGuests: number;
-  image: string;
+  images: string[];
   features: string[];
   icsUrl: string;
 }
 
-const ApartmentCard = ({ name, maxGuests, image, features, icsUrl }: ApartmentCardProps) => {
+const ApartmentCard = ({ name, maxGuests, images, features, icsUrl }: ApartmentCardProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isHovering && images.length > 1) {
+      interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      }, 1500);
+    }
+    return () => clearInterval(interval);
+  }, [isHovering, images.length]);
+
+  const handleMouseEnter = () => setIsHovering(true);
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    setCurrentImageIndex(0);
+  };
   return (
     <Card className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 transform hover:-translate-y-1 card-gradient border-0">
-      <div className="relative overflow-hidden">
-        <img 
-          src={image} 
-          alt={`${name} interior`}
-          className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
-        />
+      <div 
+        className="relative overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="relative w-full h-64">
+          {images.map((image, index) => (
+            <img 
+              key={index}
+              src={image} 
+              alt={`${name} interior ${index + 1}`}
+              className={`absolute inset-0 w-full h-64 object-cover transition-all duration-500 ${
+                index === currentImageIndex 
+                  ? 'opacity-100 transform translate-x-0' 
+                  : index < currentImageIndex 
+                    ? 'opacity-0 transform -translate-x-full'
+                    : 'opacity-0 transform translate-x-full'
+              }`}
+            />
+          ))}
+        </div>
         <div className="absolute top-4 right-4">
           <Badge variant="secondary" className="bg-primary/90 text-primary-foreground border-0">
             <Users className="w-3 h-3 mr-1" />
             Up to {maxGuests} guests
           </Badge>
         </div>
+        {images.length > 1 && (
+          <div className="absolute bottom-4 left-4 flex gap-1">
+            {images.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
       
       <CardHeader className="pb-4">

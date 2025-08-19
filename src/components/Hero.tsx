@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Star } from "lucide-react";
-import heroImage from "@/assets/camp-nou-hero.jpg";
+import heroImage from "/lovable-uploads/3c29f6ba-5b32-4bf7-baac-51a2074757a0.png";
 const Hero = () => {
   const scrollToApartments = () => {
     document.getElementById('apartments')?.scrollIntoView({
