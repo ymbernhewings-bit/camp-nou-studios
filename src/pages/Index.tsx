@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import ApartmentCard from "@/components/ApartmentCard";
 import WhatsAppSection from "@/components/WhatsAppSection";
+import CalendarPreloader from "@/components/CalendarPreloader";
 import apartmentImage from "@/assets/apartment-interior.jpg";
 import suiteImage from "@/assets/suite-interior.jpg";
 import classicImage from "@/assets/classic-apartment.jpg";
@@ -32,6 +33,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <CalendarPreloader apartments={apartments} />
       <Hero />
       
       <section id="apartments" className="py-20 px-4">

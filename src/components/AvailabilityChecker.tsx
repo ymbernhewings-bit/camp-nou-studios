@@ -82,7 +82,7 @@ const AvailabilityChecker = ({ apartmentName, icsUrl }: AvailabilityCheckerProps
     const phoneNumber = "34618254217";
     const dateStr = selectedDate ? selectedDate.toLocaleDateString() : "specific dates";
     const message = encodeURIComponent(
-      `Hi! I'm interested in booking the ${apartmentName} for ${dateStr}. Is this date available? What are the rates and exclusive perks for direct booking?`
+      `Hi! I'm interested in booking the ${apartmentName} for ${dateStr}. Is this date available?`
     );
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     setOpen(false);

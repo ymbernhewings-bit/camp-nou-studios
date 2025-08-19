@@ -35,8 +35,9 @@ const Hero = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
           <div className="flex items-center gap-2 text-yellow-400">
-            {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
-            <span className="ml-2 text-white font-semibold">Exceptional Location</span>
+            {[...Array(4)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
+            <Star className="w-5 h-5 fill-current opacity-30" />
+            <span className="ml-2 text-white font-semibold">4.3 (Airbnb)</span>
           </div>
         </div>
         

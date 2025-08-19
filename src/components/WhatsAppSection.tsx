@@ -30,8 +30,8 @@ const WhatsAppSection = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <Card className="border-0 shadow-card card-gradient">
+        <div className="flex justify-center mb-12">
+          <Card className="border-0 shadow-card card-gradient max-w-sm">
             <CardContent className="p-6 text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-6 h-6 text-primary" />
@@ -40,37 +40,28 @@ const WhatsAppSection = () => {
               <p className="text-muted-foreground text-sm">Get immediate answers to all your questions</p>
             </CardContent>
           </Card>
-          
-          <Card className="border-0 shadow-card card-gradient">
-            <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Gift className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Special Discounts</h3>
-              <p className="text-muted-foreground text-sm">Exclusive rates for direct bookings</p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-0 shadow-card card-gradient">
-            <CardContent className="p-6 text-center">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">VIP Treatment</h3>
-              <p className="text-muted-foreground text-sm">Personalized service and local recommendations</p>
-            </CardContent>
-          </Card>
         </div>
         
-        <Button 
-          variant="whatsapp"
-          size="lg"
-          onClick={handleWhatsAppClick}
-          className="text-lg px-8 py-6 h-auto"
-        >
-          <MessageCircle className="w-5 h-5 mr-2" />
-          Contact us on WhatsApp
-        </Button>
+        <div className="flex flex-col items-center gap-3">
+          <Button 
+            variant="whatsapp"
+            size="lg"
+            onClick={handleWhatsAppClick}
+            className="text-lg px-8 py-6 h-auto"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Contact us on WhatsApp
+          </Button>
+          
+          <Button 
+            variant="outline"
+            size="sm"
+            onClick={() => window.open('/legal', '_blank')}
+            className="text-sm px-4 py-2"
+          >
+            Legal/About
+          </Button>
+        </div>
         
         <p className="text-sm text-muted-foreground mt-4">
           Available 24/7 for your convenience
