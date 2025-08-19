@@ -32,8 +32,8 @@ const Index = () => {
       name: "Les Rambles Classic",
       maxGuests: 5,
       images: [
-        "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png",
         "/lovable-uploads/1ef8dd14-ad1d-4fe9-9ec6-773be4ef2655.png",
+        "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png",
         "/lovable-uploads/e5e21a5b-c0a9-4eff-aa22-94d9a940cbab.png"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
