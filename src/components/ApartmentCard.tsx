@@ -1,18 +1,19 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Wifi, Wind, Thermometer, Tv, MapPin } from "lucide-react";
+import { Users, Wifi, Wind, Thermometer, Tv, Bed } from "lucide-react";
 import AvailabilityChecker from "./AvailabilityChecker";
 import { useState, useEffect } from "react";
 
 interface ApartmentCardProps {
   name: string;
   maxGuests: number;
+  bedrooms: number;
   images: string[];
   features: string[];
   icsUrl: string;
 }
 
-const ApartmentCard = ({ name, maxGuests, images, features, icsUrl }: ApartmentCardProps) => {
+const ApartmentCard = ({ name, maxGuests, bedrooms, images, features, icsUrl }: ApartmentCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
 
@@ -54,10 +55,14 @@ const ApartmentCard = ({ name, maxGuests, images, features, icsUrl }: ApartmentC
             />
           ))}
         </div>
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-4 right-4 flex gap-2">
           <Badge variant="secondary" className="bg-primary/90 text-primary-foreground border-0">
             <Users className="w-3 h-3 mr-1" />
             Up to {maxGuests} guests
+          </Badge>
+          <Badge variant="secondary" className="bg-primary/90 text-primary-foreground border-0">
+            <Bed className="w-3 h-3 mr-1" />
+            {bedrooms} bedroom{bedrooms > 1 ? 's' : ''}
           </Badge>
         </div>
         {images.length > 1 && (
@@ -76,9 +81,8 @@ const ApartmentCard = ({ name, maxGuests, images, features, icsUrl }: ApartmentC
       
       <CardHeader className="pb-4">
         <CardTitle className="text-xl font-bold text-foreground">{name}</CardTitle>
-        <div className="flex items-center text-sm text-muted-foreground">
-          <MapPin className="w-3 h-3 mr-1" />
-          15 min walk to Camp Nou
+        <div className="text-sm text-muted-foreground">
+          Barcelona, Spain
         </div>
       </CardHeader>
       

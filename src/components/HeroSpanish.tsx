@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import HeroSlideshow from "@/components/HeroSlideshow";
-const Hero = () => {
+
+const HeroSpanish = () => {
   const heroImages = [
     "/lovable-uploads/d1495ddd-d197-4b1f-93fe-6aa8e0a76d99.png", // Arc de Triomf
     "/lovable-uploads/980638b4-0379-4da7-b93e-473489501d88.png", // Park Güell
@@ -14,33 +15,35 @@ const Hero = () => {
     });
   };
 
-  const switchToSpanish = () => {
-    window.location.href = '/spanish';
+  const switchToEnglish = () => {
+    window.location.href = '/';
   };
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <HeroSlideshow images={heroImages} className="absolute inset-0" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
       
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-fade-in">
         <div className="mb-6">
           <button
-            onClick={switchToSpanish}
+            onClick={switchToEnglish}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/20 transition-colors"
           >
-            <span className="text-2xl">🇪🇸</span>
-            <span className="text-sm font-medium">Español</span>
+            <span className="text-2xl">🇬🇧</span>
+            <span className="text-sm font-medium">English</span>
           </button>
         </div>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance leading-tight">
-          Experience Barcelona
+          Experimenta Barcelona
           <span className="block hero-gradient bg-clip-text text-transparent">
-            In Premium Apartments
+            En Apartamentos Premium
           </span>
         </h1>
         
         <p className="text-xl md:text-2xl mb-8 text-gray-200 text-balance max-w-2xl mx-auto leading-relaxed">
-          Modern apartments in the heart of Barcelona, with 24 hour customer service and automatic check-in.
+          Apartamentos modernos en el corazón de Barcelona, con servicio al cliente 24 horas y check-in automático.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -53,11 +56,12 @@ const Hero = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="hero" size="lg" onClick={scrollToApartments} className="text-lg px-8 py-6 h-auto">
-            View Our Apartments
+            Ver Nuestros Apartamentos
           </Button>
-          
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
-export default Hero;
+
+export default HeroSpanish;

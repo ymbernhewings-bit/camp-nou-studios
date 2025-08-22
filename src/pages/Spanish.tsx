@@ -1,13 +1,12 @@
-import Hero from "@/components/Hero";
-import ApartmentCard from "@/components/ApartmentCard";
-import WhatsAppSection from "@/components/WhatsAppSection";
+import Hero from "@/components/HeroSpanish";
+import ApartmentCard from "@/components/ApartmentCardSpanish";
+import WhatsAppSection from "@/components/WhatsAppSectionSpanish";
 import CalendarPreloader from "@/components/CalendarPreloader";
-// Apartment images will be defined inline with the uploaded images
 
-const Index = () => {
+const Spanish = () => {
   const apartments = [
     {
-      name: "Camp Nou Apartment",
+      name: "Apartamento Camp Nou",
       maxGuests: 2,
       bedrooms: 1,
       images: [
@@ -16,11 +15,11 @@ const Index = () => {
         "/lovable-uploads/e5e21a5b-c0a9-4eff-aa22-94d9a940cbab.png",
         "/lovable-uploads/85fbd9d0-aee9-4bc7-9584-4aadcc42fb29.png"
       ],
-      features: ["AC", "Heating", "WiFi", "TV"],
+      features: ["AC", "Calefacción", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
     },
     {
-      name: "Mr Messi Suite",
+      name: "Suite Mr Messi",
       maxGuests: 2,
       bedrooms: 1,
       images: [
@@ -29,11 +28,11 @@ const Index = () => {
         "/lovable-uploads/d3fbe54e-3fd0-450e-ba49-4e5f4a9ef590.png",
         "/lovable-uploads/2e3dea9b-23ff-4d58-87c0-4a17e0246c9e.png"
       ],
-      features: ["AC", "Heating", "WiFi", "TV"],
+      features: ["AC", "Calefacción", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
     },
     {
-      name: "Les Rambles Classic",
+      name: "Les Rambles Clásico",
       maxGuests: 5,
       bedrooms: 3,
       images: [
@@ -42,7 +41,7 @@ const Index = () => {
         "/lovable-uploads/1ef8dd14-ad1d-4fe9-9ec6-773be4ef2655.png",
         "/lovable-uploads/f94a850f-f1ba-4d24-b0b9-b8d024feb7a4.png"
       ],
-      features: ["AC", "Heating", "WiFi", "TV"],
+      features: ["AC", "Calefacción", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1076614315151123442.ics?s=a99e8323a5b151010af4f843e16ab511"
     }
   ];
@@ -56,13 +55,13 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Choose Your Perfect 
+              Elige Tu Perfecta 
               <span className="hero-gradient bg-clip-text text-transparent block">
-                Barcelona Stay
+                Estancia en Barcelona
               </span>
             </h2>
             <p className="text-xl text-muted-foreground text-balance max-w-2xl mx-auto">
-              Three unique apartments in the same building, all featuring modern amenities and elevator access.
+              Tres apartamentos únicos en el mismo edificio, todos con comodidades modernas y acceso por ascensor.
             </p>
           </div>
           
@@ -87,4 +86,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Spanish;
