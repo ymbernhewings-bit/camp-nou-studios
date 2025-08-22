@@ -31,7 +31,7 @@ const WhatsAppSectionSpanish = () => {
             Contactar por WhatsApp
           </Button>
           
-          <Link to="/house-rules">
+          <Link to="/spanish/house-rules">
             <Button 
               variant="outline" 
               size="lg" 
@@ -43,7 +43,7 @@ const WhatsAppSectionSpanish = () => {
         </div>
         
         <div className="mt-8 text-center">
-          <Link to="/legal" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/spanish/legal" className="text-sm text-muted-foreground hover:text-primary transition-colors">
             Información Legal
           </Link>
         </div>
