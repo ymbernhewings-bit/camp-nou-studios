@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-interface HeroSlideshowProps {
+type HeroSlideshowProps = {
   images: string[];
   className?: string;
-}
+};
 
 const HeroSlideshow = ({ images, className }: HeroSlideshowProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
