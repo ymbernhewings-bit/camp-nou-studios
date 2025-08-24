@@ -11,10 +11,10 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 1,
       images: [
-        "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png",
-        "/lovable-uploads/f147a109-9eb8-4c12-b61f-1be5ac23489a.png",
-        "/lovable-uploads/e5e21a5b-c0a9-4eff-aa22-94d9a940cbab.png",
-        "/lovable-uploads/85fbd9d0-aee9-4bc7-9584-4aadcc42fb29.png"
+        "/images/camp_nou_apartment_first.jpg",
+        "/images/camp_nou_apartment_second.jpg",
+        "/images/camp_nou_apartment_third.jpg",
+        "/images/camp_nou_apartment_fourth.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
@@ -24,10 +24,10 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 1,
       images: [
-        "/lovable-uploads/8590174b-1f71-432a-89c0-25d602ae14a8.png",
-        "/lovable-uploads/f743d896-dca3-411a-89d7-4d9b04685c58.png",
-        "/lovable-uploads/d3fbe54e-3fd0-450e-ba49-4e5f4a9ef590.png",
-        "/lovable-uploads/2e3dea9b-23ff-4d58-87c0-4a17e0246c9e.png"
+        "/images/mr_messi_suite_first.jpg",
+        "/images/mr_messi_suite_second.jpg",
+        "/images/mr_messi_suite_third.jpg",
+        "/images/mr_messi_suite_first.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
@@ -37,10 +37,10 @@ const Index = () => {
       maxGuests: 5,
       bedrooms: 3,
       images: [
-        "/lovable-uploads/80ae1f10-2668-4996-ad8f-26f1f4fbcdc0.png",
-        "/lovable-uploads/8faa7c72-8e0c-4203-9365-a95716d1bbd2.png",
-        "/lovable-uploads/1ef8dd14-ad1d-4fe9-9ec6-773be4ef2655.png",
-        "/lovable-uploads/f94a850f-f1ba-4d24-b0b9-b8d024feb7a4.png"
+        "/images/les_rambles_classic_first.jpg",
+        "/images/les_rambles_classic_second.jpg",
+        "/images/les_rambles_classic_third.jpg",
+        "/images/les_rambles_classic_fourth.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1076614315151123442.ics?s=a99e8323a5b151010af4f843e16ab511"
@@ -51,7 +51,40 @@ const Index = () => {
     <div className="min-h-screen">
       <CalendarPreloader apartments={apartments} />
       <Hero />
-      
+      // Add this temporarily to your Index.tsx to test image loading
+
+const ImageTest = () => {
+  const testImages = [
+    "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png",
+    "/images/slideshowpicture1.jpg",
+    "/vite.svg" // This should definitely exist
+  ];
+
+  return (
+    <div className="p-4 bg-white border-2 border-red-500 m-4">
+      <h3 className="font-bold mb-4">Image Loading Test:</h3>
+      {testImages.map((src, index) => (
+        <div key={index} className="mb-4">
+          <p className="text-sm mb-2">Testing: {src}</p>
+          <img 
+            src={src} 
+            alt={`Test ${index}`}
+            className="w-32 h-32 object-cover border"
+            onLoad={() => console.log(`✅ LOADED: ${src}`)}
+            onError={() => console.log(`❌ FAILED: ${src}`)}
+          />
+          <a 
+            href={src} 
+            target="_blank" 
+            className="text-blue-500 underline text-xs"
+          >
+            Test direct link
+          </a>
+        </div>
+      ))}
+    </div>
+  );
+};
       <section id="apartments" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
