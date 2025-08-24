@@ -51,40 +51,7 @@ const Index = () => {
     <div className="min-h-screen">
       <CalendarPreloader apartments={apartments} />
       <Hero />
-      // Add this temporarily to your Index.tsx to test image loading
-
-const ImageTest = () => {
-  const testImages = [
-    "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png",
-    "/images/slideshowpicture1.jpg",
-    "/vite.svg" // This should definitely exist
-  ];
-
-  return (
-    <div className="p-4 bg-white border-2 border-red-500 m-4">
-      <h3 className="font-bold mb-4">Image Loading Test:</h3>
-      {testImages.map((src, index) => (
-        <div key={index} className="mb-4">
-          <p className="text-sm mb-2">Testing: {src}</p>
-          <img 
-            src={src} 
-            alt={`Test ${index}`}
-            className="w-32 h-32 object-cover border"
-            onLoad={() => console.log(`✅ LOADED: ${src}`)}
-            onError={() => console.log(`❌ FAILED: ${src}`)}
-          />
-          <a 
-            href={src} 
-            target="_blank" 
-            className="text-blue-500 underline text-xs"
-          >
-            Test direct link
-          </a>
-        </div>
-      ))}
-    </div>
-  );
-};
+      
       <section id="apartments" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
