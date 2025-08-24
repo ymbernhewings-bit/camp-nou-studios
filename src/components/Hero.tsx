@@ -3,9 +3,9 @@ import { Star } from "lucide-react";
 import HeroSlideshow from "@/components/HeroSlideshow";
 const Hero = () => {
   const heroImages = [
-    "slideshowpicture1.jpg", // Arc de Triomf
-    "slideshowpicture2.jpg", // Park Güell
-    "slideshowpicture3.jpg"  // Barcelona beach
+    "/images/slideshowpicture1.jpg", // Arc de Triomf
+    "/images/slideshowpicture2.jpg", // Park Güell
+    "/images/slideshowpicture3.jpg"  // Barcelona beach
   ];
 
   const scrollToApartments = () => {
