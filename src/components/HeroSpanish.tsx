@@ -4,9 +4,9 @@ import HeroSlideshow from "@/components/HeroSlideshow";
 
 const HeroSpanish = () => {
   const heroImages = [
-    "/lovable-uploads/c79d88a4-6164-438e-bf15-96ee09d033bd.png", // Arc de Triomf
-    "/lovable-uploads/5bb20d88-ad1b-4a03-97a4-127a1f8053e9.png", // Park Güell
-    "/lovable-uploads/87475b30-c0a0-498d-8ee5-8af844e2f374.png"  // Barcelona beach
+    "slideshowpicture1.jpg", // Arc de Triomf
+    "slideshowpicture2.jpg", // Park Güell
+    "slideshowpicture3.jpg"  // Barcelona beach
   ];
 
   const scrollToApartments = () => {
