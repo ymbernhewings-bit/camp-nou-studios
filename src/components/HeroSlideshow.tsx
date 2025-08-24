@@ -7,62 +7,94 @@ type HeroSlideshowProps = {
 
 const HeroSlideshow = ({ images, className }: HeroSlideshowProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<boolean[]>([]);
+  const [debugInfo, setDebugInfo] = useState<string[]>([]);
 
-  // Debug logging
+  // Test if images actually exist
   useEffect(() => {
-    console.log("HeroSlideshow mounted with images:", images);
-  }, []);
-
-  useEffect(() => {
-    console.log("Setting up interval for slideshow");
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => {
-        const nextIndex = prevIndex === images.length - 1 ? 0 : prevIndex + 1;
-        console.log(`Changing slide from ${prevIndex} to ${nextIndex}`);
-        return nextIndex;
-      });
-    }, 4000);
-
-    return () => {
-      console.log("Cleaning up slideshow interval");
-      clearInterval(interval);
+    console.log("Testing image loading...");
+    const testImages = async () => {
+      const results = await Promise.all(
+        images.map(async (src, index) => {
+          try {
+            const img = new Image();
+            const loadPromise = new Promise<boolean>((resolve) => {
+              img.onload = () => {
+                console.log(`✅ Image ${index} loaded successfully: ${src}`);
+                setDebugInfo(prev => [...prev, `✅ Image ${index}: ${src} - LOADED`]);
+                resolve(true);
+              };
+              img.onerror = () => {
+                console.log(`❌ Image ${index} failed to load: ${src}`);
+                setDebugInfo(prev => [...prev, `❌ Image ${index}: ${src} - FAILED`]);
+                resolve(false);
+              };
+            });
+            img.src = src;
+            return await loadPromise;
+          } catch (error) {
+            console.log(`❌ Image ${index} error: ${src}`, error);
+            return false;
+          }
+        })
+      );
+      setLoadedImages(results);
+      console.log("Image loading results:", results);
     };
-  }, [images.length]);
 
-  // Debug current state
+    testImages();
+  }, [images]);
+
   useEffect(() => {
-    console.log(`Current image index: ${currentImageIndex}, showing: ${images[currentImageIndex]}`);
-  }, [currentImageIndex, images]);
+    if (loadedImages.some(loaded => loaded)) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => {
+          const nextIndex = prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+          console.log(`Changing slide from ${prevIndex} to ${nextIndex}`);
+          return nextIndex;
+        });
+      }, 4000);
+
+      return () => clearInterval(interval);
+    }
+  }, [images.length, loadedImages]);
 
   return (
     <div className={`relative w-full h-full ${className}`}>
-      {/* Debug info - remove this after fixing */}
-      <div className="absolute top-4 left-4 z-50 bg-black/50 text-white p-2 text-xs">
-        Debug: Index {currentImageIndex}, Image: {images[currentImageIndex]}
+      {/* Debug panel */}
+      <div className="absolute top-4 left-4 z-50 bg-black/80 text-white p-4 text-xs max-w-sm">
+        <div><strong>Debug Info:</strong></div>
+        <div>Current Index: {currentImageIndex}</div>
+        <div>Current Image: {images[currentImageIndex]}</div>
+        <div>Total Images: {images.length}</div>
+        <div><strong>Loading Status:</strong></div>
+        {debugInfo.map((info, i) => (
+          <div key={i}>{info}</div>
+        ))}
       </div>
       
-      {images.map((image, index) => {
-        console.log(`Rendering image ${index}: ${image}, visible: ${index === currentImageIndex}`);
-        return (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ backgroundImage: `url(${image})` }}
-            onLoad={() => console.log(`Image loaded: ${image}`)}
-            onError={() => console.log(`Image failed to load: ${image}`)}
-          />
-        );
-      })}
+      {/* Try using img tags instead of background-image */}
+      {images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Slide ${index + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ zIndex: index === currentImageIndex ? 1 : 0 }}
+        />
+      ))}
       
-      {/* Fallback content */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500">
+      {/* Fallback gradient */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500"
+        style={{ zIndex: -1 }}
+      >
         <div className="absolute inset-0 flex items-center justify-center text-white">
           <div className="text-center">
-            <div>Slideshow Debug Mode</div>
-            <div>Current: {currentImageIndex + 1} of {images.length}</div>
-            <div>Image: {images[currentImageIndex]}</div>
+            <div className="text-2xl mb-4">🏠 Barcelona Apartments</div>
+            <div>Images: {loadedImages.filter(Boolean).length}/{images.length} loaded</div>
           </div>
         </div>
       </div>
