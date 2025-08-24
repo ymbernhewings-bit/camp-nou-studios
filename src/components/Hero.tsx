@@ -3,9 +3,9 @@ import { Star } from "lucide-react";
 import HeroSlideshow from "@/components/HeroSlideshow";
 const Hero = () => {
   const heroImages = [
-    "/lovable-uploads/d1495ddd-d197-4b1f-93fe-6aa8e0a76d99.png", // Barcelona landmark 1
-    "/lovable-uploads/980638b4-0379-4da7-b93e-473489501d88.png", // Barcelona landmark 2
-    "/lovable-uploads/c808f60f-20bc-4633-992b-ff1d7319e14a.png"  // Barcelona landmark 3
+    "/lovable-uploads/c79d88a4-6164-438e-bf15-96ee09d033bd.png", // Arc de Triomf
+    "/lovable-uploads/5bb20d88-ad1b-4a03-97a4-127a1f8053e9.png", // Park Güell
+    "/lovable-uploads/87475b30-c0a0-498d-8ee5-8af844e2f374.png"  // Barcelona beach
   ];
 
   const scrollToApartments = () => {
