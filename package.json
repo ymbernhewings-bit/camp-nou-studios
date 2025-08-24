@@ -1,14 +1,14 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "camp-nou-studios",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "next",
+    "build": "next build",
     "build:dev": "vite build --mode development",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "next lint .",
+    "preview": "next preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
