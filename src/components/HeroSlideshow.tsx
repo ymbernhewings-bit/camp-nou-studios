@@ -30,21 +30,6 @@ const HeroSlideshow = ({ images, className }: HeroSlideshowProps) => {
         />
       ))}
       
-      {/* Pagination dots */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentImageIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentImageIndex 
-                ? 'bg-white' 
-                : 'bg-white/50 hover:bg-white/70'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
     </div>
   );
 };

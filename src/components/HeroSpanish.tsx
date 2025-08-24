@@ -4,9 +4,9 @@ import HeroSlideshow from "@/components/HeroSlideshow";
 
 const HeroSpanish = () => {
   const heroImages = [
-    "/lovable-uploads/d1495ddd-d197-4b1f-93fe-6aa8e0a76d99.png", // Arc de Triomf
-    "/lovable-uploads/980638b4-0379-4da7-b93e-473489501d88.png", // Park Güell
-    "/lovable-uploads/c808f60f-20bc-4633-992b-ff1d7319e14a.png"  // Barcelona beach
+    "/lovable-uploads/fbffee15-b695-4df7-adfe-11f93843f7fd.png", // Arc de Triomf
+    "/lovable-uploads/d5d35a43-4be8-497d-985d-df442fb80a12.png", // Park Güell
+    "/lovable-uploads/240737a3-7289-4073-817f-be308e179f36.png"  // Barcelona beach
   ];
 
   const scrollToApartments = () => {
@@ -30,7 +30,7 @@ const HeroSpanish = () => {
             onClick={switchToEnglish}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/20 transition-colors"
           >
-            <span className="text-2xl">🇬🇧</span>
+            <span className="text-2xl">🇺🇸</span>
             <span className="text-sm font-medium">English</span>
           </button>
         </div>
