@@ -1,10 +1,13 @@
-// Replace your entire Hero.tsx with this version that forces the background
-
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import HeroSlideshow from "./HeroSlideshow";
 
 const Hero = () => {
-  const testImage = "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png";
+  const slideshowImages = [
+    "/images/slideshowpicture1.jpg",
+    "/images/slideshowpicture2.jpg",
+    "/images/slideshowpicture3.jpg"
+  ];
 
   const scrollToApartments = () => {
     const element = document.getElementById('apartments');
@@ -20,16 +23,16 @@ const Hero = () => {
   };
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center"
-      style={{
-        backgroundImage: `url(${testImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Dark overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 w-full h-full">
+        <HeroSlideshow 
+          images={slideshowImages} 
+          className="w-full h-full"
+        />
+      </div>
+      
+      {/* Dark overlay for better text readability */}
       <div 
         className="absolute inset-0"
         style={{
@@ -38,6 +41,7 @@ const Hero = () => {
         }}
       ></div>
       
+      {/* Content */}
       <div 
         className="relative text-center text-white px-4 max-w-4xl mx-auto animate-fade-in"
         style={{ zIndex: 2 }}
@@ -75,11 +79,6 @@ const Hero = () => {
           <Button variant="hero" size="lg" onClick={scrollToApartments} className="text-lg px-8 py-6 h-auto">
             View Our Apartments
           </Button>
-        </div>
-
-        {/* Debug info */}
-        <div className="mt-8 text-sm opacity-50">
-          Using inline styles - Image: {testImage}
         </div>
       </div>
     </section>
