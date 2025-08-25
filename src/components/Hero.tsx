@@ -1,10 +1,10 @@
-// Replace your entire Hero.tsx with this simple test temporarily
+// Replace your entire Hero.tsx with this version that forces the background
 
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 
 const Hero = () => {
-  const testImage = "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png"; // Same as your apartment
+  const testImage = "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png";
 
   const scrollToApartments = () => {
     const element = document.getElementById('apartments');
@@ -20,16 +20,28 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Simple single image test - no slideshow */}
-      <img 
-        src={testImage}
-        alt="Test"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+    <section 
+      className="relative min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: `url(${testImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.3))',
+          zIndex: 1
+        }}
+      ></div>
       
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-fade-in">
+      <div 
+        className="relative text-center text-white px-4 max-w-4xl mx-auto animate-fade-in"
+        style={{ zIndex: 2 }}
+      >
         <div className="mb-6">
           <button
             onClick={switchToSpanish}
@@ -67,7 +79,7 @@ const Hero = () => {
 
         {/* Debug info */}
         <div className="mt-8 text-sm opacity-50">
-          Testing image: {testImage}
+          Using inline styles - Image: {testImage}
         </div>
       </div>
     </section>
