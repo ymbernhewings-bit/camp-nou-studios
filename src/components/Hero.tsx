@@ -1,24 +1,32 @@
+// Replace your entire Hero.tsx with this simple test temporarily
+
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
-import HeroSlideshow from "@/components/HeroSlideshow";
+
 const Hero = () => {
-  const heroImages = [
-    "/images/slideshowpicture1.jpg", // Arc de Triomf
-    "/images/slideshowpicture2.jpg", // Park Güell
-    "/images/slideshowpicture3.jpg"  // Barcelona beach
-  ];
+  const testImage = "/lovable-uploads/53b9ea01-0dd9-44fe-a74d-79b3d8c98703.png"; // Same as your apartment
 
   const scrollToApartments = () => {
-    document.getElementById('apartments')?.scrollIntoView({
-      behavior: 'smooth'
-    });
+    const element = document.getElementById('apartments');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   };
 
   const switchToSpanish = () => {
     window.location.href = '/spanish';
   };
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <HeroSlideshow images={heroImages} className="absolute inset-0" />
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Simple single image test - no slideshow */}
+      <img 
+        src={testImage}
+        alt="Test"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
       
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-fade-in">
@@ -55,9 +63,15 @@ const Hero = () => {
           <Button variant="hero" size="lg" onClick={scrollToApartments} className="text-lg px-8 py-6 h-auto">
             View Our Apartments
           </Button>
-          
+        </div>
+
+        {/* Debug info */}
+        <div className="mt-8 text-sm opacity-50">
+          Testing image: {testImage}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
