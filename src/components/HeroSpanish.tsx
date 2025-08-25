@@ -1,18 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { MapPin, Star } from "lucide-react";
-import HeroSlideshow from "@/components/HeroSlideshow";
+import { Star } from "lucide-react";
+import HeroSlideshow from "./HeroSlideshow";
 
 const HeroSpanish = () => {
-  const heroImages = [
-    "slideshowpicture1.jpg", // Arc de Triomf
-    "slideshowpicture2.jpg", // Park Güell
-    "slideshowpicture3.jpg"  // Barcelona beach
+  const slideshowImages = [
+    "/images/slideshowpicture1.jpg",
+    "/images/slideshowpicture2.jpg",
+    "/images/slideshowpicture3.jpg"
   ];
 
   const scrollToApartments = () => {
-    document.getElementById('apartments')?.scrollIntoView({
-      behavior: 'smooth'
-    });
+    const element = document.getElementById('apartments');
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   };
 
   const switchToEnglish = () => {
@@ -21,10 +24,28 @@ const HeroSpanish = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <HeroSlideshow images={heroImages} className="absolute inset-0" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+      {/* Background Slideshow */}
+      <div className="absolute inset-0 w-full h-full">
+        <HeroSlideshow 
+          images={slideshowImages} 
+          className="w-full h-full"
+        />
+      </div>
       
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto animate-fade-in">
+      {/* Dark overlay for better text readability */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.3))',
+          zIndex: 1
+        }}
+      ></div>
+      
+      {/* Content */}
+      <div 
+        className="relative text-center text-white px-4 max-w-4xl mx-auto animate-fade-in"
+        style={{ zIndex: 2 }}
+      >
         <div className="mb-6">
           <button
             onClick={switchToEnglish}
