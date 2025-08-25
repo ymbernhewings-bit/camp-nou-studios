@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import { Star, MessageCircle, MapPin } from "lucide-react";
 import HeroSlideshow from "./HeroSlideshow";
 
 const Hero = () => {
@@ -16,6 +16,18 @@ const Hero = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "34618254217";
+    const message = encodeURIComponent("Hi! I'm interested in your Barcelona apartments near Camp Nou. Can you tell me more?");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  const openGoogleMaps = () => {
+    const address = "Carrer de Rafael Campalans, 63, L'Hospitalet de Llobregat, Barcelona, Spain";
+    const encodedAddress = encodeURIComponent(address);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
   };
 
   const switchToSpanish = () => {
@@ -76,8 +88,33 @@ const Hero = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="hero" size="lg" onClick={scrollToApartments} className="text-lg px-8 py-6 h-auto">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            onClick={handleWhatsAppClick}
+            className="text-lg px-8 py-6 h-auto bg-white text-black hover:bg-gray-100 border-white"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Contact Us
+          </Button>
+
+          <Button 
+            variant="hero" 
+            size="lg" 
+            onClick={scrollToApartments} 
+            className="text-lg px-8 py-6 h-auto"
+          >
             View Our Apartments
+          </Button>
+
+          <Button 
+            variant="outline" 
+            size="lg" 
+            onClick={openGoogleMaps}
+            className="text-lg px-8 py-6 h-auto bg-white text-black hover:bg-gray-100 border-white"
+          >
+            <MapPin className="w-5 h-5 mr-2" />
+            Our Location
           </Button>
         </div>
       </div>
