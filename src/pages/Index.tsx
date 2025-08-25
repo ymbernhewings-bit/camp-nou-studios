@@ -27,7 +27,7 @@ const Index = () => {
         "/images/mr_messi_suite_first.jpg",
         "/images/mr_messi_suite_second.jpg",
         "/images/mr_messi_suite_third.jpg",
-        "/images/mr_messi_suite_first.jpg"
+        "/images/mr_messi_suite_fourth.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
