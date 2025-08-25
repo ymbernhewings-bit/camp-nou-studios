@@ -14,11 +14,11 @@ const WhatsAppSection = () => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Need Help?
+            Exclusive Perks
           </h2>
           
           <p className="text-xl text-muted-foreground mb-8 text-balance max-w-2xl mx-auto">
-            Our support team is available 24/7 to assist you with any questions about your stay.
+            Book directly with us and enjoy exclusive perks that you won't find anywhere else.
           </p>
         </div>
         
