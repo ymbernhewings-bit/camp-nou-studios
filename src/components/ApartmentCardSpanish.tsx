@@ -102,7 +102,7 @@ const ApartmentCardSpanish = ({ name, maxGuests, bedrooms, images, features, ics
             </Badge>
             <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm text-foreground font-semibold">
               <Bed className="w-3 h-3 mr-1" />
-              {bedrooms} dormitorio{bedrooms > 1 ? 's' : ''}
+              {bedrooms === 0 ? 'Estudio' : `${bedrooms} dormitorio${bedrooms > 1 ? 's' : ''}`}
             </Badge>
           </div>
           
