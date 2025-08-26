@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Bed } from "lucide-react";
@@ -16,6 +16,9 @@ interface ApartmentCardProps {
 const ApartmentCardSpanish = ({ name, maxGuests, bedrooms, images, features, icsUrl }: ApartmentCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isHovering) return;
@@ -38,6 +41,35 @@ const ApartmentCardSpanish = ({ name, maxGuests, bedrooms, images, features, ics
     setCurrentImageIndex(0);
   };
 
+  // Mobile swipe functionality
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && images.length > 1) {
+      // Swipe left - next image
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }
+    if (isRightSwipe && images.length > 1) {
+      // Swipe right - previous image
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  };
+
   return (
     <Card 
       className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-xl bg-card"
@@ -45,7 +77,13 @@ const ApartmentCardSpanish = ({ name, maxGuests, bedrooms, images, features, ics
       onMouseLeave={handleMouseLeave}
     >
       <CardHeader className="p-0 relative">
-        <div className="relative h-64 overflow-hidden">
+        <div 
+          ref={imageContainerRef}
+          className="relative h-64 overflow-hidden"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {images.map((image, index) => (
             <img
               key={index}
@@ -69,18 +107,20 @@ const ApartmentCardSpanish = ({ name, maxGuests, bedrooms, images, features, ics
           </div>
           
           {/* Image pagination dots */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1">
-            {images.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex 
-                    ? 'bg-white' 
-                    : 'bg-white/50'
-                }`}
-              />
-            ))}
-          </div>
+          {images.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1">
+              {images.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex 
+                      ? 'bg-white' 
+                      : 'bg-white/50'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </CardHeader>
       
