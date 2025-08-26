@@ -25,7 +25,7 @@ const Hero = () => {
   };
 
   const openGoogleMaps = () => {
-    const address = "Carrer de Rafael Campalans, L'Hospitalet de Llobregat, Barcelona, Spain";
+    const address = "Carrer de Rafael Campalans, 63, L'Hospitalet de Llobregat, Barcelona, Spain";
     const encodedAddress = encodeURIComponent(address);
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
   };
@@ -63,7 +63,7 @@ const Hero = () => {
             onClick={switchToSpanish}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/20 transition-colors"
           >
-            <span className="text-2xl">🇪🇸</span>
+            <span className="text-2xl" style={{ fontFamily: 'Segoe UI Emoji, Apple Color Emoji, Noto Color Emoji, sans-serif' }}>🇪🇸</span>
             <span className="text-sm font-medium">Español</span>
           </button>
         </div>
