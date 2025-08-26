@@ -63,7 +63,7 @@ const HeroSpanish = () => {
             onClick={switchToEnglish}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/20 transition-colors"
           >
-            <span className="text-2xl" style={{ fontFamily: 'Segoe UI Emoji, Apple Color Emoji, Noto Color Emoji, sans-serif' }}>🇺🇸</span>
+            <span className="text-2xl">🇺🇸</span>
             <span className="text-sm font-medium">English</span>
           </button>
         </div>
