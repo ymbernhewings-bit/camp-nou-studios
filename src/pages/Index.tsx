@@ -7,7 +7,7 @@ import CalendarPreloader from "@/components/CalendarPreloader";
 const Index = () => {
   const apartments = [
     {
-      name: "Coral Studio",
+      name: "Camp Nou Apartment",
       maxGuests: 2,
       bedrooms: 1,
       images: [
@@ -20,20 +20,20 @@ const Index = () => {
       icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
     },
     {
-      name: "Olive 1 Bedroom",
+      name: "Mr Messi Suite",
       maxGuests: 2,
       bedrooms: 1,
       images: [
         "/images/mr_messi_suite_first.jpg",
         "/images/mr_messi_suite_second.jpg",
         "/images/mr_messi_suite_third.jpg",
-        "/images/mr_messi_suite_fourth.jpg"
+        "/images/mr_messi_suite_first.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
     },
     {
-      name: "Jasmine 3 Bedroom",
+      name: "Les Rambles Classic",
       maxGuests: 5,
       bedrooms: 3,
       images: [
@@ -57,7 +57,7 @@ const Index = () => {
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Choose Your Perfect 
-              <span className="hero-gradient bg-clip-text text-transparent block">
+              <span className="hero-gradient bg-clip-text text-transparent block md:inline">
                 Barcelona Stay
               </span>
             </h2>
