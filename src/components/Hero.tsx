@@ -25,7 +25,7 @@ const Hero = () => {
   };
 
   const openGoogleMaps = () => {
-    const address = "Carrer de Rafael Campalans, 63, L'Hospitalet de Llobregat, Barcelona, Spain";
+    const address = "Carrer de Rafael Campalans, L'Hospitalet de Llobregat, Barcelona, Spain";
     const encodedAddress = encodeURIComponent(address);
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
   };
