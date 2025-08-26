@@ -6,7 +6,7 @@ import CalendarPreloader from "@/components/CalendarPreloader";
 const Spanish = () => {
   const apartments = [
     {
-      name: "Coral 1 Habitación",
+      name: "Estudio Coral",
       maxGuests: 2,
       bedrooms: 1,
       images: [
@@ -19,7 +19,7 @@ const Spanish = () => {
       icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
     },
     {
-      name: "Estudio Olivo",
+      name: "Olivo 1 Habitación",
       maxGuests: 2,
       bedrooms: 1,
       images: [
