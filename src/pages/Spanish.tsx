@@ -8,7 +8,7 @@ const Spanish = () => {
     {
       name: "Estudio Coral",
       maxGuests: 2,
-      bedrooms: 1,
+      bedrooms: 0,
       images: [
         "/images/camp_nou_apartment_first.jpg",
         "/images/camp_nou_apartment_second.jpg",
@@ -56,7 +56,7 @@ const Spanish = () => {
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
               Elige Tu Perfecta 
-              <span className="hero-gradient bg-clip-text text-transparent block">
+              <span className="hero-gradient bg-clip-text text-transparent block md:inline">
                 Estancia en Barcelona
               </span>
             </h2>
