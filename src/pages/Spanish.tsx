@@ -19,7 +19,7 @@ const Spanish = () => {
       icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
     },
     {
-      name: "Studio Olivo",
+      name: "Estudio Olivo",
       maxGuests: 2,
       bedrooms: 1,
       images: [
