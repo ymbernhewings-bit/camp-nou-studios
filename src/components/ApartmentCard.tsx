@@ -99,7 +99,7 @@ const ApartmentCard = ({ name, maxGuests, bedrooms, images, features, icsUrl }: 
           </Badge>
           <Badge variant="secondary" className="bg-primary/90 text-primary-foreground border-0">
             <Bed className="w-3 h-3 mr-1" />
-            {bedrooms} bedroom{bedrooms > 1 ? 's' : ''}
+            {bedrooms === 0 ? 'Studio' : `${bedrooms} bedroom${bedrooms > 1 ? 's' : ''}`}
           </Badge>
         </div>
         {images.length > 1 && (
