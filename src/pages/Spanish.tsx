@@ -6,7 +6,7 @@ import CalendarPreloader from "@/components/CalendarPreloader";
 const Spanish = () => {
   const apartments = [
     {
-      name: "Apartamento Camp Nou",
+      name: "Coral 1 Habitación",
       maxGuests: 2,
       bedrooms: 1,
       images: [
@@ -19,7 +19,7 @@ const Spanish = () => {
       icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
     },
     {
-      name: "Suite Mr Messi",
+      name: "Studio Olivo",
       maxGuests: 2,
       bedrooms: 1,
       images: [
@@ -32,7 +32,7 @@ const Spanish = () => {
       icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
     },
     {
-      name: "Les Rambles Clásico",
+      name: "Jasmín 3 Habitaciones",
       maxGuests: 5,
       bedrooms: 3,
       images: [
