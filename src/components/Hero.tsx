@@ -63,7 +63,11 @@ const Hero = () => {
             onClick={switchToSpanish}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/20 transition-colors"
           >
-            <span className="text-2xl">🇪🇸</span>
+            <svg width="20" height="15" viewBox="0 0 20 15" className="rounded-sm">
+              <rect width="20" height="5" fill="#AA151B"/>
+              <rect y="5" width="20" height="5" fill="#F1BF00"/>
+              <rect y="10" width="20" height="5" fill="#AA151B"/>
+            </svg>
             <span className="text-sm font-medium">Español</span>
           </button>
         </div>
