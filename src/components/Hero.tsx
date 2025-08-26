@@ -35,7 +35,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen md:min-h-screen min-h-[120vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[120vh] md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Slideshow */}
       <div className="absolute inset-0 w-full h-full">
         <HeroSlideshow 
@@ -58,7 +58,7 @@ const Hero = () => {
         className="relative text-center text-white px-4 max-w-4xl mx-auto animate-fade-in"
         style={{ zIndex: 2 }}
       >
-        <div className="mb-6 md:mb-6 mb-12">
+        <div className="mb-12 md:mb-6">
           <button
             onClick={switchToSpanish}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 hover:bg-white/20 transition-colors"
