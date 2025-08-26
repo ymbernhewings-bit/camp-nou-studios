@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, FileText, MapPin, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const WhatsAppSection = () => {
@@ -7,6 +7,10 @@ const WhatsAppSection = () => {
     const phoneNumber = "34618254217"; // Spain country code + number
     const message = encodeURIComponent("Hi! I'm interested in booking one of your Barcelona apartments near Camp Nou. Can you tell me about exclusive perks for direct bookings?");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  const openCityGuide = () => {
+    window.open('/Guia-Guide-Barcelona (CampNouStudios).pdf', '_blank');
   };
 
   return (
@@ -20,38 +24,57 @@ const WhatsAppSection = () => {
           <p className="text-xl text-muted-foreground mb-8 text-balance max-w-2xl mx-auto">
             Book directly with us and enjoy exclusive perks that you won't find anywhere else.
           </p>
+
+          {/* WhatsApp Contact Button */}
+          <div className="mb-8">
+            <Button 
+              variant="whatsapp"
+              size="lg"
+              onClick={handleWhatsAppClick}
+              className="text-lg px-8 py-6 h-auto"
+            >
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Contact us on WhatsApp
+            </Button>
+          </div>
         </div>
         
-        
+        {/* Three Buttons Row */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Link to="/legal">
+            <Button 
+              variant="whatsapp"
+              size="lg"
+              className="text-lg px-8 py-6 h-auto"
+            >
+              <FileText className="w-5 h-5 mr-2" />
+              Legal Information
+            </Button>
+          </Link>
+
           <Button 
-            variant="whatsapp"
+            variant="outline"
             size="lg"
-            onClick={handleWhatsAppClick}
-            className="text-lg px-8 py-6 h-auto"
+            onClick={openCityGuide}
+            className="text-lg px-8 py-6 h-auto bg-white text-black hover:bg-gray-100 border-gray-300"
           >
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Contact us on WhatsApp
+            <MapPin className="w-5 h-5 mr-2" />
+            City Guide
           </Button>
           
           <Link to="/house-rules">
             <Button 
-              variant="outline"
+              variant="whatsapp"
               size="lg"
               className="text-lg px-8 py-6 h-auto"
             >
+              <Home className="w-5 h-5 mr-2" />
               House Rules
             </Button>
           </Link>
         </div>
         
-        <div className="mt-8 text-center">
-          <Link to="/legal" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            Legal Information
-          </Link>
-        </div>
-        
-        <p className="text-sm text-muted-foreground mt-4">
+        <p className="text-sm text-muted-foreground mt-8">
           Available 24/7 for your convenience
         </p>
       </div>
