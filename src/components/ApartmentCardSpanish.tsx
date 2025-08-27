@@ -1,89 +1,165 @@
-import Hero from "@/components/HeroSpanish";
-import ApartmentCardSpanish from "@/components/ApartmentCardSpanish";
-import WhatsAppSection from "@/components/WhatsAppSectionSpanish";
-import CalendarPreloader from "@/components/CalendarPreloader";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Users, Wifi, Wind, Thermometer, Tv, Bed } from "lucide-react";
+import AvailabilityChecker from "./AvailabilityChecker";
+import { useState, useEffect, useRef } from "react";
 
-const Spanish = () => {
-  const apartments = [
-    {
-      name: "Estudio Coral",
-      maxGuests: 2,
-      bedrooms: 0,
-      images: [
-        "/images/camp_nou_apartment_first.jpg",
-        "/images/camp_nou_apartment_second.jpg",
-        "/images/camp_nou_apartment_third.jpg",
-        "/images/camp_nou_apartment_fourth.jpg"
-      ],
-      features: ["AC", "Calefacción", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
-    },
-    {
-      name: "Olivo 1 Habitación",
-      maxGuests: 2,
-      bedrooms: 1,
-      images: [
-        "/images/mr_messi_suite_first.jpg",
-        "/images/mr_messi_suite_second.jpg",
-        "/images/mr_messi_suite_third.jpg",
-        "/images/mr_messi_suite_fourth.jpg"
-      ],
-      features: ["AC", "Calefacción", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
-    },
-    {
-      name: "Jasmín 3 Habitaciones",
-      maxGuests: 5,
-      bedrooms: 3,
-      images: [
-        "/images/les_rambles_classic_first.jpg",
-        "/images/les_rambles_classic_second.jpg",
-        "/images/les_rambles_classic_third.jpg",
-        "/images/les_rambles_classic_fourth.jpg"
-      ],
-      features: ["AC", "Calefacción", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1076614315151123442.ics?s=a99e8323a5b151010af4f843e16ab511"
+interface ApartmentCardProps {
+  name: string;
+  maxGuests: number;
+  bedrooms: number;
+  images: string[];
+  features: string[];
+  icsUrl: string;
+}
+
+const ApartmentCardSpanish = ({ name, maxGuests, bedrooms, images, features, icsUrl }: ApartmentCardProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isHovering && images.length > 1) {
+      interval = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      }, 1500);
     }
-  ];
+    return () => clearInterval(interval);
+  }, [isHovering, images.length]);
+
+  const handleMouseEnter = () => setIsHovering(true);
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    setCurrentImageIndex(0);
+  };
+
+  // Mobile swipe functionality
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && images.length > 1) {
+      // Swipe left - next image
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }
+    if (isRightSwipe && images.length > 1) {
+      // Swipe right - previous image
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  };
 
   return (
-    <div className="min-h-screen">
-      <CalendarPreloader apartments={apartments} />
-      <Hero />
-      
-      <section id="apartments" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Elige Tu Perfecta 
-              <span className="hero-gradient bg-clip-text text-transparent block md:inline">
-                Estancia en Barcelona
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground text-balance max-w-2xl mx-auto">
-              Tres apartamentos únicos en el mismo edificio, todos con comodidades modernas y acceso por ascensor.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 animate-slide-up">
-            {apartments.map((apartment, index) => (
-              <ApartmentCardSpanish
+    <Card className="overflow-hidden shadow-card hover:shadow-glow transition-all duration-300 transform hover:-translate-y-1 card-gradient border-0">
+      <div 
+        ref={imageContainerRef}
+        className="relative overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <div className="relative w-full h-64">
+          {images.map((image, index) => (
+            <img 
+              key={index}
+              src={image} 
+              alt={`${name} interior ${index + 1}`}
+              className={`absolute inset-0 w-full h-64 object-cover transition-all duration-500 ${
+                index === currentImageIndex 
+                  ? 'opacity-100 transform translate-x-0' 
+                  : index < currentImageIndex 
+                    ? 'opacity-0 transform -translate-x-full'
+                    : 'opacity-0 transform translate-x-full'
+              }`}
+            />
+          ))}
+        </div>
+        <div className="absolute top-4 right-4 flex gap-2">
+          <Badge variant="secondary" className="bg-primary/90 text-primary-foreground border-0">
+            <Users className="w-3 h-3 mr-1" />
+            Hasta {maxGuests} huéspedes
+          </Badge>
+          <Badge variant="secondary" className="bg-primary/90 text-primary-foreground border-0">
+            <Bed className="w-3 h-3 mr-1" />
+            {bedrooms === 0 ? 'Estudio' : `${bedrooms} dormitorio${bedrooms > 1 ? 's' : ''}`}
+          </Badge>
+        </div>
+        {images.length > 1 && (
+          <div className="absolute bottom-4 left-4 flex gap-1">
+            {images.map((_, index) => (
+              <div
                 key={index}
-                name={apartment.name}
-                maxGuests={apartment.maxGuests}
-                bedrooms={apartment.bedrooms}
-                images={apartment.images}
-                features={apartment.features}
-                icsUrl={apartment.icsUrl}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                }`}
               />
             ))}
           </div>
-        </div>
-      </section>
+        )}
+      </div>
       
-      <WhatsAppSection />
-    </div>
+      <CardHeader className="pb-4">
+        <CardTitle className="text-xl font-bold text-foreground">{name}</CardTitle>
+        <div className="text-sm text-muted-foreground">
+          Barcelona, España
+        </div>
+      </CardHeader>
+      
+      <CardContent className="pb-6">
+        <div className="grid grid-cols-2 gap-3">
+          {features.includes('AC') && (
+            <div className="flex items-center text-sm text-muted-foreground">
+              <Wind className="w-4 h-4 mr-2 text-primary" />
+              Aire Acondicionado
+            </div>
+          )}
+          {features.includes('Heating') && (
+            <div className="flex items-center text-sm text-muted-foreground">
+              <Thermometer className="w-4 h-4 mr-2 text-primary" />
+              Calefacción
+            </div>
+          )}
+          {features.includes('WiFi') && (
+            <div className="flex items-center text-sm text-muted-foreground">
+              <Wifi className="w-4 h-4 mr-2 text-primary" />
+              WiFi de Alta Velocidad
+            </div>
+          )}
+          {features.includes('TV') && (
+            <div className="flex items-center text-sm text-muted-foreground">
+              <Tv className="w-4 h-4 mr-2 text-primary" />
+              Smart TV
+            </div>
+          )}
+        </div>
+      </CardContent>
+      
+      <CardFooter>
+        <AvailabilityChecker 
+          apartmentName={name}
+          icsUrl={icsUrl}
+        />
+      </CardFooter>
+    </Card>
   );
 };
 
-export default Spanish;
+export default ApartmentCardSpanish;
