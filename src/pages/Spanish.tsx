@@ -1,5 +1,5 @@
 import Hero from "@/components/HeroSpanish";
-import ApartmentCard from "@/components/ApartmentCardSpanish";
+import ApartmentCardSpanish from "@/components/ApartmentCardSpanish";
 import WhatsAppSection from "@/components/WhatsAppSectionSpanish";
 import CalendarPreloader from "@/components/CalendarPreloader";
 
@@ -54,9 +54,9 @@ const Spanish = () => {
       <section id="apartments" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Elige Tu Perfecta 
-              <span className="hero-gradient bg-clip-text text-transparent block md:inline">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground leading-tight">
+              <span className="block">Elige Tu Perfecta</span>
+              <span className="block hero-gradient bg-clip-text text-transparent">
                 Estancia en Barcelona
               </span>
             </h2>
@@ -67,7 +67,7 @@ const Spanish = () => {
           
           <div className="grid md:grid-cols-3 gap-8 animate-slide-up">
             {apartments.map((apartment, index) => (
-              <ApartmentCard
+              <ApartmentCardSpanish
                 key={index}
                 name={apartment.name}
                 maxGuests={apartment.maxGuests}
