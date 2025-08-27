@@ -55,9 +55,9 @@ const Index = () => {
       <section id="apartments" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Choose Your Perfect 
-              <span className="hero-gradient bg-clip-text text-transparent block md:inline">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground leading-tight">
+              <span className="block">Choose Your Perfect</span>
+              <span className="block hero-gradient bg-clip-text text-transparent">
                 Barcelona Stay
               </span>
             </h2>
