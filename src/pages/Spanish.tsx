@@ -16,7 +16,7 @@ const Spanish = () => {
         "/images/camp_nou_apartment_fourth.jpg"
       ],
       features: ["AC", "Calefacción", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
+      icsUrl: "Estudio Coral" // Now using Spanish apartment name
     },
     {
       name: "Olivo 1 Habitación",
@@ -29,7 +29,7 @@ const Spanish = () => {
         "/images/mr_messi_suite_fourth.jpg"
       ],
       features: ["AC", "Calefacción", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
+      icsUrl: "Olivo 1 Habitación" // Now using Spanish apartment name
     },
     {
       name: "Jasmín 3 Habitaciones",
@@ -42,7 +42,7 @@ const Spanish = () => {
         "/images/les_rambles_classic_fourth.jpg"
       ],
       features: ["AC", "Calefacción", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1076614315151123442.ics?s=a99e8323a5b151010af4f843e16ab511"
+      icsUrl: "Jasmín 3 Habitaciones" // Now using Spanish apartment name
     }
   ];
 
