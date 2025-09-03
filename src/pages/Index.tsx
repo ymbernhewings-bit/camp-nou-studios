@@ -17,7 +17,7 @@ const Index = () => {
         "/images/camp_nou_apartment_fourth.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1095572106327138736.ics?s=5b099ab3b0239722393598e285f0cc14"
+      icsUrl: "Coral Studio" // Now using apartment name instead of ICS URL
     },
     {
       name: "Olive 1 Bedroom",
@@ -30,7 +30,7 @@ const Index = () => {
         "/images/mr_messi_suite_fourth.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1076840964171198214.ics?s=63fbede26f54903652eecfebe6dc3fcd"
+      icsUrl: "Olive 1 Bedroom" // Now using apartment name instead of ICS URL
     },
     {
       name: "Jasmine 3 Bedrooms",
@@ -43,7 +43,7 @@ const Index = () => {
         "/images/les_rambles_classic_fourth.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
-      icsUrl: "https://www.airbnb.com/calendar/ical/1076614315151123442.ics?s=a99e8323a5b151010af4f843e16ab511"
+      icsUrl: "Jasmine 3 Bedrooms" // Now using apartment name instead of ICS URL
     }
   ];
 
