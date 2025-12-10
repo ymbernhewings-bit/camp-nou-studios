@@ -24,7 +24,7 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 1,
       images: [
-        "/images/mr_messi_suite_first.jpg",
+        "/images/Flat 2-07 Detalle-2-opt.jpg",
         "/images/mr_messi_suite_second.jpg",
         "/images/mr_messi_suite_third.jpg",
         "/images/mr_messi_suite_fourth.jpg"
