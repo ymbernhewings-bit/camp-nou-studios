@@ -24,10 +24,10 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 1,
       images: [
-        "/images/Flat 2-07 Detalle-2-opt.jpg",
-        "/images/mr_messi_suite_second.jpg",
-        "/images/mr_messi_suite_third.jpg",
-        "/images/mr_messi_suite_fourth.jpg"
+        "/images/1BR 1.jpg",
+        "/images/1BR 2.jpg",
+        "/images/1BR 3.jpg",
+        "/images/1BR 4.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "Olive 1 Bedroom" // Now using apartment name instead of ICS URL
