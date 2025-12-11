@@ -11,10 +11,10 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 0,
       images: [
-        "/images/camp_nou_apartment_first.jpg",
-        "/images/camp_nou_apartment_second.jpg",
-        "/images/camp_nou_apartment_third.jpg",
-        "/images/camp_nou_apartment_fourth.jpg"
+        "/images/St 1.jpg",
+        "/images/St 2.jpg",
+        "/images/St 3.jpg",
+        "/images/st 4.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "Coral Studio" // Now using apartment name instead of ICS URL
