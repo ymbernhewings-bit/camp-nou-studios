@@ -7,6 +7,8 @@ const Hero = () => {
     "/images/slideshowpicture1.jpg",
     "/images/slideshowpicture2.jpg",
     "/images/slideshowpicture3.jpg"
+    "/images/E1.jpg"
+  "/images/E2.jpg"
   ];
 
   const scrollToApartments = () => {
