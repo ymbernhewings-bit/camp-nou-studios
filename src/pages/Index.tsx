@@ -11,10 +11,10 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 0,
       images: [
-        "/images/St 1.jpg",
-        "/images/St 2.jpg",
-        "/images/St 3.jpg",
-        "/images/st 4.jpg"
+        "/images/St1.jpg",
+        "/images/St2.jpg",
+        "/images/St3.jpg",
+        "/images/st4.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "Coral Studio" // Now using apartment name instead of ICS URL
@@ -24,10 +24,10 @@ const Index = () => {
       maxGuests: 2,
       bedrooms: 1,
       images: [
-        "/images/1BR 1.jpg",
-        "/images/1BR 2.jpg",
-        "/images/1BR 3.jpg",
-        "/images/1BR 4.jpg"
+        "/images/1BR1.jpg",
+        "/images/1BR2.jpg",
+        "/images/1BR3.jpg",
+        "/images/1BR4.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "Olive 1 Bedroom" // Now using apartment name instead of ICS URL
