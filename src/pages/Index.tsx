@@ -37,10 +37,10 @@ const Index = () => {
       maxGuests: 5,
       bedrooms: 3,
       images: [
-        "/images/les_rambles_classic_first.jpg",
-        "/images/les_rambles_classic_second.jpg",
-        "/images/les_rambles_classic_third.jpg",
-        "/images/les_rambles_classic_fourth.jpg"
+        "/images/3BR1.jpg",
+        "/images/3BR2.jpg",
+        "/images/3BR3.jpg",
+        "/images/3BR4.jpg"
       ],
       features: ["AC", "Heating", "WiFi", "TV"],
       icsUrl: "Jasmine 3 Bedrooms" // Now using apartment name instead of ICS URL
